@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
 
+  get '/users/:id' do
+    authenticate_user
+    @user = User.find(params[:id])
+    if @user && @user == current_user
+      erb :'users/show'
+    else
+      redirect '/workouts'
+    end
+  end
+
   get '/signup' do
     if !session[:user_id]
-      erb :'/users/create_user'
+      erb :'users/create_user'
     else
       redirect to '/workouts'
     end
@@ -38,5 +48,13 @@ class UsersController < ApplicationController
     end
   end
 
-
+  get '/logout' do
+    if session[:user_id] != nil
+      session.destroy
+      flash[:message] = "You are now logged out."
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
 end
