@@ -59,10 +59,19 @@
             </div>
           </div>
         </div>
-
         <% end %>
 
   <!--div class="container"-->
+
+  <% flash.keys.each do |type| %>
+    <div data-alert class="flash <%= type %> alert-box radius">
+      <%= flash[type] %>
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+    </div>
+
+    <% end %>
+
+    <!--h1>ChurnNBurn</h1-->
 
   </div>
       <%= yield %>
