@@ -29,6 +29,15 @@ class WorkoutsController < ApplicationController
     erb :'/workouts/show_workout'
   end
 
+  get '/workouts/:id/edit' do
+    authenticate_user
+    @workout = Workout.find(params[:id])
+    if session[:user_id] != @workout.user_id
+      redirect to '/workouts'
+    end
+      erb :'/workouts/edit_workout'
+  end
+
   post '/workouts/:id' do
     authenticate_user
     @workout = Workout.find(params[:id])
@@ -40,6 +49,4 @@ class WorkoutsController < ApplicationController
     flash[:workout_updated] = "Your workout has been updated!"
     redirect to "users/#{current_user.id}"
   end
-
-
 end
