@@ -49,4 +49,15 @@ class WorkoutsController < ApplicationController
     flash[:workout_updated] = "Your workout has been updated!"
     redirect to "users/#{current_user.id}"
   end
+
+  delete '/workouts/:id/delete' do
+    authenticate_user
+    @workout = Workout.find(params[:id])
+    if session[:user_id] != @workout.user_id
+      redirect to '/workouts'
+    end
+    @workout.delete
+    flash[:workout_deleted] = "Your workout has been deleted!"
+    redirect to "users/#{current_user.id}"
+  end
 end
