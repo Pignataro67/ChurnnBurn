@@ -11,12 +11,8 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
-#  get '/' do
-#    erb :index
-#  end
-
-  get '/' do
-    flash[:notice] = "Hooray, Flash is working!"
+    get '/' do
+    #flash[:notice] = "Hooray, Flash is working!"
     erb :index
   end
 
@@ -36,7 +32,7 @@ end
   def authenticate_user
 
     if !logged_in?
-      redirect_to '/login'
+      redirect to '/login'
     end
   end
 end
