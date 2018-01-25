@@ -1,0 +1,22 @@
+<div class="container well-lg">
+
+  <h2>Your Workouts</h2>
+    <ul class="list-group">
+      <% @user.workouts.each do |workout| %>
+        <a href="/workouts/<%= workout.id %>" class="list-group-item-modal-sm">
+          <%= workout.name %>
+          <br>
+          <%= workout.back %>
+          <%= workout.legs %>
+          <%= workout.hamstrings %>
+          <%= workout.chest %>
+          <%= workout.shoulders %>
+          <%= workout.triceps %>
+          <%= workout.biceps %>
+          <%= workout.core %>
+          <%= workout.finisher %>
+       </a>
+       <br>
+       <% end %>
+    </ul>
+</div>
