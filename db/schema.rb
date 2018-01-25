@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(version: 20171221185327) do
     t.string  "biceps"
     t.string  "core"
     t.integer "user_id"
+    t.string  "name"
+    t.string  "hamstrings"
+    t.string  "namee"
+    t.string  "finisher"
   end
 
 end
