@@ -13,10 +13,10 @@ class WorkoutsController < ApplicationController
 
   post '/workouts' do
     authenticate_user
-    @workout = current_user.workouts.build(name: params[:name], back: params[:back], legs: params[:legs], chest: params[:chest], shoulders: params[:shoulders], triceps: params[:triceps], biceps: params[:biceps], core: params[:core])
+    @workout = current_user.workouts.build(name: params[:name], back: params[:back], legs: params[:legs], chest: params[:chest], shoulders: params[:shoulders], triceps: params[:triceps], biceps: params[:biceps], core: params[:core], hamstrings: params[:hamstrings], finisher: params[:finisher])
     if @workout.save
       flash[:workout_created] = "Your workout has been created!"
-      redirect to '/users/#{current_user.id}'
+      redirect to "/users/#{current_user.id}"
     else
       flash[:message] = @workout.errors.full_messages.join(', ')
       redirect to '/workouts/new'
@@ -43,9 +43,9 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
     if params[:name] == ""
       flash[:workout_name_at_update] = "Your workout must have a name!"
-      redirect to 'workouts/#{@workout.id}/edit'
+      redirect to "workouts/#{@workout.id}/edit"
     end
-    @workout.update(name: params[:name], back: params[:back], legs: params[:legs], chest: params[:chest], shoulders: params[:shoulders], triceps: params[:triceps], biceps: params[:biceps], core: params[:core])
+    @workout.update(name: params[:name], back: params[:back], legs: params[:legs], chest: params[:chest], shoulders: params[:shoulders], triceps: params[:triceps], biceps: params[:biceps], core: params[:core], hamstrings: params[:hamstrings], finisher: params[:finisher])
     flash[:workout_updated] = "Your workout has been updated!"
     redirect to "users/#{current_user.id}"
   end

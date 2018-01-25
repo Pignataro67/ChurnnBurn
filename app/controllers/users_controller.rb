@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   get '/users/:id' do
     authenticate_user
     @user = User.find(params[:id])
-    if @user && @user == current_user
+    if @user == current_user
       erb :'users/show'
     else
       redirect '/workouts'
