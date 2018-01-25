@@ -1,0 +1,26 @@
+<div class="container well-lg">
+
+  <h2> Pick a workout below or create your own! </h2>
+    <ul class="list-group">
+      <% @workouts.each do |workout| %>
+        <a href="/workouts/<%= workout.id %>"class="list-group-item modal-sm">
+        <%= workout.name %>
+        <br>
+        <%= workout.back %>
+        <%= workout.legs %>
+        <%= workout.hamstrings %>
+        <%= workout.chest %>
+        <%= workout.shoulders %>
+        <%= workout.triceps %>
+        <%= workout.biceps %>
+        <%= workout.core %>
+        <%= workout.finisher %>
+
+      <% if workout.user_id == current_user.id %>
+      <p><strong> This is your Workout </strong></p>
+      <% end %>
+      </a>
+      <br>
+      <% end %>
+    </ul>
+</div>

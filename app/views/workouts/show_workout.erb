@@ -1,0 +1,107 @@
+<div class="container well-lg">
+
+  <div class="row">
+    <div class="col-md-3">
+      <h2> Workout Name: </h2>
+    </div>
+      <div class="col-md-3">
+        <h2><%= @workout.name %></h2>
+      </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Back:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.back %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Legs:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.legs %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Hamstrings:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.hamstrings %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Chest:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.chest %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Shoulders:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.shoulders %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Triceps:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.triceps %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Biceps:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.biceps %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Core:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.core %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Finisher:</h3>
+      </div>
+      <div class="col-md-3">
+        <h3><%= @workout.finisher %></h3>
+      </div>
+    </div>
+    <br>
+
+    <% if @workout.user_id == current_user.id %>
+    <a href="\workouts\<%= @workout.id %>/edit" class="btn btn-primary"> Edit Workout </a>
+    <br>
+
+    <form action="/workouts/<%= @workout.id %>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input class="btn btn-primary" type="submit" value="Delete Workout">
+    </form>
+    <br>
+    <a href="/workouts" class="btn btn-primary"> Back to Workouts </a>
+    <% else %>
+      <a href="/workouts" class="btn btn-primary"> Back to Workouts </a>
+      <% end %>
+</div>
