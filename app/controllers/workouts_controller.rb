@@ -41,6 +41,9 @@ class WorkoutsController < ApplicationController
   post '/workouts/:id' do
     authenticate_user
     @workout = Workout.find(params[:id])
+    if session[:user_id] != @workout.user_id
+      redirect to '/workouts'
+    end
     if params[:name] == ""
       flash[:workout_name_at_update] = "Your workout must have a name!"
       redirect to "workouts/#{@workout.id}/edit"
